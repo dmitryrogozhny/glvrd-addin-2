@@ -1,0 +1,131 @@
+/* global */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.4em;
+    font-size: 0.9rem;
+}
+
+/* app styles */
+.addin {
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    padding: 1em;
+}
+
+.text-section {
+    max-height: calc(99vh - 150px);
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
+.text-section span {
+    white-space: pre-wrap;
+}
+
+.additional-info-section {
+    height: 120px;
+}
+
+.divider {
+    border-bottom: 1px solid #ccc;
+    height: 1px;
+    margin: .3em 0;
+}
+
+.empty-section {
+    height: 100px;
+    padding: 0;
+}
+
+.error-section {
+    height: 100px;
+    color: red;
+    padding: 0;
+}
+
+.comment-section {
+    height: 100px;
+}
+
+.summary-section {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.summary-subsection:first-child {
+    width: 65%;
+}
+
+.summary-subsection {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.help-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.help-section div:first-child {
+    width: 65%;
+}
+
+
+/* Typography */
+.xl-text {
+    font-size: 2.5rem;
+    line-height: 1;
+    padding-right: .1em;
+    margin-left: -.06em;
+}
+
+.l-text {
+    font-size: 1.5rem;
+    line-height: 1;
+    padding-bottom: .2em;
+}
+
+.placeholder-text {
+    color: #9197a3;
+}
+
+.link-text {
+    color: #0078d7;
+}
+
+.spinner {
+    background: url(./spinner.svg) 0 100% no-repeat;
+    background-position: -25px -25px;
+}
+
+.commented-text {
+    color: #dA570f;
+    background: url(./underline.svg) 0 100% repeat-x;
+
+    border-radius: .2em;
+    padding: 3px 2px;
+    margin: 0 -2px;
+
+    transition: background-color .25s, color .25s;
+}
+
+.commented-text:hover {
+    transition: background-color 0s, color 0s;
+    background: #DA570F;
+    color: #fff;
+
+    transition: background-color .25s, color .25s;
+}

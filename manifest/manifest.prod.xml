@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+          xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+          xsi:type="TaskPaneApp">
+
+  <Id>11885453-6eb1-4f37-935b-0c13cfb3edec</Id>
+
+  <Version>1.0.0.0</Version>
+  <ProviderName>Dmitry Rogozhny</ProviderName>
+  <DefaultLocale>ru-ru</DefaultLocale>
+
+  <DisplayName DefaultValue="Главред - проверка стиля текста">
+    <Override Locale="en-US" Value="Glvrd - Text Style Checker" />
+  </DisplayName>
+  <Description DefaultValue="Находит в тексте языковой мусор, штампы и канцелярит. Подсвечивает подозрительные выражения.">
+    <Override Locale="en-US" Value="Helps to find problems in Russian-language texts: fillers, journalese, and corporate jargon." />
+  </Description>
+
+  <IconUrl DefaultValue="https://glvrdaddin.azurewebsites.net/img/Button32x32.png" />
+
+  <SupportUrl DefaultValue="https://glvrdaddin.azurewebsites.net/pages/about_ru.html">
+    <Override Locale="en-US" Value="https://glvrdaddin.azurewebsites.net/pages/about_en.html" />
+  </SupportUrl>
+
+  <AppDomains>
+    <AppDomain>https://glvrdaddin.azurewebsites.net</AppDomain>
+    <AppDomain>https://glvrd.ru/</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Document" />
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://glvrdaddin.azurewebsites.net/index.html" />
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="CPS.GetStarted.Title"/>
+            <Description resid="CPS.GetStarted.Description"/>
+            <LearnMoreUrl resid="CPS.GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="CPS.DesktopFunctionFile.Url" />
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabReviewWord">
+              <Group id="CPS.Group1">
+                <Label resid="CPS.Group1Label" />
+                <Icon>
+                  <bt:Image size="16" resid="CPS.tpicon_16x16" />
+                  <bt:Image size="32" resid="CPS.tpicon_32x32" />
+                  <bt:Image size="80" resid="CPS.tpicon_80x80" />
+                </Icon>
+
+                <Control xsi:type="Button" id="CPS.TaskpaneButton">
+                  <Label resid="CPS.TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="CPS.TaskpaneButton.Label" />
+                    <Description resid="CPS.TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="CPS.tpicon_16x16" />
+                    <bt:Image size="32" resid="CPS.tpicon_32x32" />
+                    <bt:Image size="80" resid="CPS.tpicon_80x80" />
+                  </Icon>
+
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="CPS.Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="CPS.tpicon_16x16" DefaultValue="https://glvrdaddin.azurewebsites.net/img/Button16x16.png" />
+        <bt:Image id="CPS.tpicon_32x32" DefaultValue="https://glvrdaddin.azurewebsites.net/img/Button32x32.png" />
+        <bt:Image id="CPS.tpicon_80x80" DefaultValue="https://glvrdaddin.azurewebsites.net/img/Button80x80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="CPS.DesktopFunctionFile.Url" DefaultValue="https://glvrdaddin.azurewebsites.net/functionFile.html" />
+        <bt:Url id="CPS.Taskpane.Url" DefaultValue="https://glvrdaddin.azurewebsites.net/index.html" />
+        <bt:Url id="CPS.GetStarted.LearnMoreUrl" DefaultValue="https://glvrdaddin.azurewebsites.net/pages/about_ru.html" />
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="CPS.TaskpaneButton.Label" DefaultValue="Начать Проверку">
+          <bt:Override Locale="en-US" Value="Start Proofreading" />
+        </bt:String>
+        <bt:String id="CPS.Group1Label" DefaultValue="Главред">
+          <bt:Override Locale="en-US" Value="Glvrd" />
+        </bt:String>
+        <bt:String id="CPS.GetStarted.Title" DefaultValue="Для проверки откройте панель Главреда и выделите текст в документе.">
+          <bt:Override Locale="en-US" Value="Click 'Start Proofreading' and select some text to start proofreading." />
+        </bt:String>
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+        <bt:String id="CPS.TaskpaneButton.Tooltip" DefaultValue="Нажмите для начала проверки">
+          <bt:Override Locale="en-US" Value="Click to Show the Glvrd Taskpane" />
+        </bt:String>
+        <bt:String id="CPS.GetStarted.Description" DefaultValue="Главред загружен. Для работы с плагином нажмите 'Начать Проверку' на вкладке РЕЦЕНЗИРОВАНИЕ.">
+          <bt:Override Locale="en-US" Value="Glvrd add-in loaded succesfully. Go to the REVIEW tab and click the 'Start Proofreading' button to get started." />
+        </bt:String>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+
+</OfficeApp>

@@ -1,0 +1,36 @@
+{
+  "name": "glvrd-plugin-2",
+  "version": "1.0.0",
+  "description": "Helps to find problems in Russian-language texts: fillers, journalese, and corporate jargon.",
+  "main": "index.js",
+  "scripts": {
+    "validate": "./node_modules/.bin/validate-office-addin",
+    "clean": "rimraf dist",
+    "start": "webpack-dev-server --inline --hot --config config/webpack.dev.js --progress",
+    "build": "npm run clean && webpack --config config/webpack.prod.js --colors --progress --bail"
+  },
+  "author": "Dmitry Rogozhny",
+  "license": "MIT",
+  "devDependencies": {
+    "elm": "^0.18.0",
+    "typescript": "^2.5.3",
+    "@types/office-js": "0.0.49",
+
+    "office-addin-validator": "^1.0.5",
+    "rimraf": "^2.6.2",
+    "browser-sync": "^2.18.13",
+
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3",
+    "webpack-merge": "^4.1.0",
+    "awesome-typescript-loader": "^3.2.3",
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "copy-webpack-plugin": "^4.2.0",
+    "elm-webpack-loader": "^4.3.1",
+    "file-loader": "^1.1.5",
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.19.0"
+  },
+  "dependencies": {
+  }
+}
