@@ -1,7 +1,7 @@
 port module Main exposing (..)
 
 import AppTranslation exposing (..)
-import Html exposing (Attribute, Html, a, div, span, text)
+import Html exposing (Attribute, Html, a, div, span, text, table, td, tr)
 import Html.Attributes exposing (attribute, class, href, target)
 import Html.Events exposing (on, onClick, onMouseLeave)
 import Json.Decode exposing (Decoder, at, string)
@@ -266,30 +266,42 @@ viewCommentSection comments activeCommentId =
         Just comment ->
             div [ class "comment-section" ]
                 [ div [ class "l-text" ] [ text comment.hint.name ]
-                , div [] [ text comment.hint.description ]
+                , div [ class "comment-text"] [ text comment.hint.description ]
                 ]
 
         Nothing ->
             viewEmptySection
 
-
 viewSummarySection : Language -> ProofreadResult -> Html msg
 viewSummarySection language result =
-    div [ class "summary-section" ]
-        [ div [ class "summary-subsection" ]
-            [ div [ class "xl-text" ] [ text result.score ]
-            , div []
-                [ div [] [ text <| translate language ScoreText ]
-                , div [] [ text <| translate language ByGlvrdScaleText ]
+    table [ class "summary-table summary-table__full-width" ] [
+        tr []
+            [ td [ class "summary-cell" ]
+                    [ table [ class "summary-table" ]
+                        [
+                            tr []
+                                [ td [] [ div [ class "xl-text" ] [ text result.score ] ]
+                                , td []
+                                    [ div []
+                                        [ text <| translate language ScoreText
+                                        , div [] []
+                                        , text <| translate language ByGlvrdScaleText ]
+                                    ]
+                                ]
+                        ]
+                    ]
+            , td []
+                [
+                    table [ class "summary-table" ]
+                        [
+                            tr []
+                                [ td [] [ div [ class "xl-text" ] [ text <| toString <| List.length result.fragments ] ]
+                                , td [] [ text <| translate language (StopWordsText { number = List.length result.fragments }) ]
+                                ]
+                        ]
+                    ]
                 ]
             ]
-        , div [ class "summary-subsection" ]
-            [ div [ class "xl-text" ] [ text <| toString <| List.length result.fragments ]
-            , div [] [ text <| translate language (StopWordsText { number = List.length result.fragments }) ]
-            ]
-        ]
-
-
 
 -- UTILITY
 
